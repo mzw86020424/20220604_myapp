@@ -1,0 +1,30 @@
+from decimal import DefaultContext
+import http
+from multiprocessing.spawn import import_main_path
+from typing import AsyncIterable
+from fastapi import APIRouter, HTTPException, Depends
+from sqlalchemy.ext.asyncio import AsyncSession
+
+import api.schemas.done as done_scema
+import api.cruds.done as done_crud
+from api.db import get_db
+
+router = APIRouter()
+
+
+@router.put("/tasks/{task_id}/done", response_model=done_scema.DoneResponse)
+async def mark_test_as_done(task_id: int, db: AsyncSession = Depends(get_db)):
+    done = await done_crud.get_done(db, task_id=task_id)
+    if done is not None:
+        raise HTTPException(status_code=400, detail="Already done")
+    
+    return await done_crud.create_done(db, task_id)
+
+
+@router.delete("/tasks/{task_id}/done", response_model=None)
+async def unmark_task_as_done(task_id: int, db: AsyncSession = Depends(get_db)):
+    done = await done_crud.get_done(db, task_id=task_id)
+    if done is None:
+        raise HTTPException(status_code=404, detail="Done not found")
+
+    return await done_crud.delete_done(db, original=done)
