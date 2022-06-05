@@ -1,18 +1,23 @@
 <template>
-  <hello-world />
+  <div>
+    <title-logo />
+    <list-card></list-card>
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 
 // Components
-import HelloWorld from '../components/HelloWorld.vue';
+import TitleLogo from '../components/TitleLogo.vue';
+import ListCard from '../components/ListCard.vue'
 
 export default defineComponent({
   name: 'HomeView',
 
   components: {
-    HelloWorld,
+    TitleLogo,
+    ListCard,
   },
 });
 </script>

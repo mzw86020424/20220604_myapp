@@ -1,6 +1,16 @@
 <template>
   <v-app>
     <v-main>
+      <v-col class="mb-5" cols="12">
+        <v-row justify="center">
+          <v-breadcrumbs divider="/">
+            <router-link to="/">home</router-link>
+          </v-breadcrumbs>
+          <v-breadcrumbs divider="/">
+            <router-link to="/about">about</router-link>
+          </v-breadcrumbs>
+        </v-row>
+      </v-col>
       <router-view/>
     </v-main>
   </v-app>
