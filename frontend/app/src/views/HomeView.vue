@@ -1,7 +1,11 @@
 <template>
   <div>
     <title-logo />
-    <list-card></list-card>
+    <ul id="array-rendering">
+      <li v-for="item in items" :key="item.id">
+        <list-card :title="item.message" ></list-card>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -19,5 +23,17 @@ export default defineComponent({
     TitleLogo,
     ListCard,
   },
+
+  data() {
+    return {
+      items: [
+        { id: 1, message: 'Foo' },
+        { id: 2, message: 'Bar' },
+        { id: 3, message: 'hoge' },
+        { id: 4, message: 'fuga' },
+        { id: 5, message: 'lorem' },
+      ]
+    }
+  }
 });
 </script>
