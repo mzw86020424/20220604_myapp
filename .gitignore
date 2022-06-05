@@ -1,17 +1,16 @@
-/frontend/app/.DS_Store
-/frontend/app/node_modules
-/frontend/app/dist
-
+frontend/app/.DS_Store
+frontend/app/node_modules
+frontend/app/dist
 
 # local env files
-/frontend/app/.env.local
-/frontend/app/.env.*.local
+frontend/app/.env.local
+frontend/app/.env.*.local
 
 # Log files
-/frontend/app/npm-debug.log*
-/frontend/app/yarn-debug.log*
-/frontend/app/yarn-error.log*
-/frontend/app/pnpm-debug.log*
+frontend/app/npm-debug.log*
+frontend/app/yarn-debug.log*
+frontend/app/yarn-error.log*
+frontend/app/pnpm-debug.log*
 
 # Editor directories and files
 .idea
