@@ -23,17 +23,29 @@ export default defineComponent({
     TitleLogo,
     ListCard,
   },
-
-  data() {
-    return {
-      items: [
+  
+  methods: {
+    getListCards() {
+      console.log('getLists!');
+      let items = [
         { id: 1, message: 'Foo' },
         { id: 2, message: 'Bar' },
         { id: 3, message: 'hoge' },
         { id: 4, message: 'fuga' },
         { id: 5, message: 'lorem' },
       ]
+      return items
+    },
+  },
+
+  data() {
+    return {
+      items: {}
     }
-  }
+  },
+
+  created() {
+    this.items = this.getListCards();
+  },
 });
 </script>
