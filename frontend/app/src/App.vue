@@ -2,9 +2,13 @@
   <v-app>
     <v-main>
       <v-col class="mb-5" cols="12">
+        <title-logo></title-logo>
         <v-row justify="center">
           <v-breadcrumbs divider="/">
             <router-link to="/">home</router-link>
+          </v-breadcrumbs>
+          <v-breadcrumbs divider="/">
+            <router-link to="/post">post</router-link>
           </v-breadcrumbs>
           <v-breadcrumbs divider="/">
             <router-link to="/about">about</router-link>
@@ -18,14 +22,15 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import TitleLogo from './components/TitleLogo.vue'
 
 export default defineComponent({
-  name: 'App',
-
-  data () {
-    return {
-      //
-    }
-  },
+    name: "App",
+    data() {
+        return {
+        //
+        };
+    },
+    components: { TitleLogo }
 })
 </script>

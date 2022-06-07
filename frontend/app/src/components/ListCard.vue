@@ -1,12 +1,12 @@
 <template>
 <div>
-    <v-card elevation="5" outlined shaped>
+    <v-card class="mx-auto my-12" elevation="5" outlined shaped>
         <v-img
         src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
         ></v-img>
-        <v-card-title>{{ title }}</v-card-title>
-        <v-card-subtitle>this is subtitle about test</v-card-subtitle>
-        <v-card-text>this is main text about test. lorem ipsum</v-card-text>
+        <v-card-title>{{ item.title }}</v-card-title>
+        <v-card-subtitle v-if="!item.done">未完了</v-card-subtitle>
+        <v-card-text>{{ item.id }}</v-card-text>
     </v-card>
 </div>
 </template>
@@ -18,6 +18,7 @@ export default defineComponent({
     name: 'ListCard',
     props: {
     title: String,
+    item: {}
     },
 });
 </script>
