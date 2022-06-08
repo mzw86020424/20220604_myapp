@@ -1,6 +1,17 @@
 <template>
   <div>
       <h1>This is posting page</h1>
+    <div class="text-center">
+      <v-chip
+        v-if="chip"
+        class="ma-2"
+        color="green"
+        @click="chip = false"
+      >
+        Success
+      </v-chip>
+
+    </div>
     <v-form>
         <v-container>
             <v-row>
@@ -42,9 +53,9 @@ export default defineComponent({
         .post("http://localhost:8000/tasks", {
         title: this.title,
         })
-        .then((res) => {
-        console.log(res);
-        this.id = res.data.id;
+        .then(() => {
+          this.chip = true;
+          this.title = "";
         })
         .catch((err) => {
         console.log(err);
@@ -54,13 +65,14 @@ export default defineComponent({
 
   data() {
     return {
-        title: String,
-        id: String,
+        title: "",
+        id: "",
+        chip: false,
     }
   },
 
   created() {
-    //
+    // 
   },
 });
 </script>
