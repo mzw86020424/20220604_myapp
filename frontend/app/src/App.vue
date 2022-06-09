@@ -26,11 +26,6 @@ import TitleLogo from './components/TitleLogo.vue'
 
 export default defineComponent({
     name: "App",
-    data() {
-        return {
-        //
-        };
-    },
     components: { TitleLogo }
 })
 </script>

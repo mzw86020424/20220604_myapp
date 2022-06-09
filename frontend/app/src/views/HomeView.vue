@@ -1,9 +1,7 @@
 <template>
   <div>
-    <ul id="array-rendering">
-      <li v-for="item in items" :key="item.id">
-        <list-card :item="item"></list-card>
-      </li>
+    <ul>
+        <list-card  v-for="item in items" :key="item.id" :item="item"/>
     </ul>
   </div>
 </template>
@@ -22,7 +20,7 @@ export default defineComponent({
   components: {
     ListCard,
   },
-  
+
   methods: {
     getListCards() {
       axios
@@ -30,6 +28,7 @@ export default defineComponent({
       .then(response => (
         this.items = response.data
       ));
+      console.log('getlistcards')
     },
   },
 
@@ -42,5 +41,6 @@ export default defineComponent({
   created() {
     this.getListCards();
   },
+
 });
 </script>

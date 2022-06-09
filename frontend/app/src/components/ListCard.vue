@@ -6,8 +6,10 @@
         ></v-img>
         <v-card-title>{{ item.title }}</v-card-title>
         <v-card-subtitle v-if="!item.done">未完了</v-card-subtitle>
-        <v-card-text>{{ item.id }}</v-card-text>
-        <button v-on:click="deleteListCard(item.id)">delete</button>
+        <v-card-text>lorem ipsum hoge fuga foo bar</v-card-text>
+        <button
+        @click="deleteListCard(item.id)"
+        >delete</button>
     </v-card>
 </div>
 </template>
@@ -20,27 +22,21 @@ export default defineComponent({
     name: 'ListCard',
     props: {
         title: String,
-        item: {}
+        item: {},
     },
     
     methods: {
-    deleteListCard(id: string) {
-        axios
-        .delete('http://localhost:8000/tasks/' + id)
-        .then(response => (
-            console.log(response.data)
-        ))
-        .catch(error => {
-            console.log(error)
-        });
+        deleteListCard(id: string) {
+            axios
+            .delete('http://localhost:8000/tasks/' + id)
+            .then((res) => (
+                console.log(res)
+            ))
+            .catch(error => {
+                console.log(error)
+            });
         },
     },
-
-    data() {
-        return {
-            targetTitle: String,
-            targetId: String,
-        }
-    },
+    
 });
 </script>
