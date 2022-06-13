@@ -26,7 +26,7 @@ export default defineComponent({
       axios
       .get('http://localhost:8000/tasks')
       .then(response => (
-        this.items = response.data
+        this.$store.commit('index_items', response.data)
       ));
       console.log('getlistcards')
     },
