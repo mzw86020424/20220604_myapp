@@ -58,7 +58,6 @@ export default Vue.extend({
   async created() {
     await this.getListCards();
     this.items = this.$store.getters.items;
-    await this.$store.dispatch('post_item', "");
   },
 
 });
