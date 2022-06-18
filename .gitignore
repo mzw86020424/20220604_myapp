@@ -20,3 +20,5 @@ frontend/app/pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
+
+*.pyc
