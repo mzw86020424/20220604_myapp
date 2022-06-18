@@ -73,8 +73,16 @@ actions: {
             (res) => res.data,
             () => ''
         ); 
-    }
+    },
 
+    async put_title(context, {id, title}){
+        await axios
+        .put(`http://localhost:8000/tasks/${id}`, {title: title})
+        .then(
+            (res) => res.data,
+            () => ''
+        );
+    }
 },
 getters: {
     items(state) {
