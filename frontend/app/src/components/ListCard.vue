@@ -55,6 +55,7 @@ export default class ListCard extends Vue {
     }
 
     async deleteListCard(id: number) {
+        await store.dispatch('undone_item', id); // 
         await store.dispatch('delete_item', id);
         this.$emit('parentMethod');
     }
