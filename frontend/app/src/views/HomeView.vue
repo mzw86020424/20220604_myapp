@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul>
-        <list-card v-for="item in items" :key="item.id" :item="item" @parentMethod="getListCards" />
+        <list-card v-for="item in items.slice().reverse()" :key="item.id" :item="item" @parentMethod="getListCards" />
     </ul>
   </div>
 </template>
