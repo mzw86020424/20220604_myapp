@@ -1,9 +1,6 @@
 <template>
 <div>
     <v-card class="mx-auto my-12" elevation="2" max-width="374">
-        <v-img
-        src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
-        ></v-img>
         <v-card-title v-if="!isEditable" @click="openEditor()">{{  item.id }} : {{ item.title }}</v-card-title>
         <v-form v-if="isEditable">
             <v-card-title>
@@ -12,16 +9,25 @@
                     label="title"
                     required
                     :append-icon="'mdi-send'"
-                    @click:append="put_title(item.id, title)"
+                    @click:append="putTitle(item.id, title)"
                 ></v-text-field>
             </v-card-title>
         </v-form>
-        <v-btn color="error" @click="doneItem(item.id)" v-if="!item.done">未完了</v-btn>
-        <v-btn color="primary" @click="undone_item(item.id)" v-if="item.done">完了</v-btn>
+        <v-img
+        src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
+        ></v-img>
         <v-card-text>lorem ipsum hoge fuga foo bar</v-card-text>
-        <button
-        @click="deleteListCard(item.id)"
-        >delete</button>
+        <v-row justify="center">
+            <v-col>
+                <v-btn color="error" @click="doneItem(item.id)" v-if="!item.done">未完了</v-btn>
+                <v-btn color="primary" @click="undoneItem(item.id)" v-if="item.done">完了</v-btn>
+            </v-col>
+            <v-col>
+                <v-btn
+                @click="deleteListCard(item.id)"
+                >delete</v-btn>
+            </v-col>
+        </v-row>
     </v-card>
 </div>
 </template>
@@ -58,13 +64,13 @@ export default class ListCard extends Vue {
         this.$emit('parentMethod');
     }
 
-    async undone_item(id: string) {
+    async undoneItem(id: string) {
         await store.dispatch('undone_item', id);
         this.$emit('parentMethod');
     }
 
-    async put_title(id: string, title: string) {
-        await store.dispatch('put_title',{id:id, title:title});
+    async putTitle(id: string, title: string) {
+        await store.dispatch('put_title', {id:id, title:title});
         this.isEditable = false;
         this.$emit('parentMethod');
     }
