@@ -59,7 +59,7 @@ actions: {
 
     async done_item(context, id) {
         await axios
-        .put(`api/tasks/${id}/done`)
+        .put(`http://localhost:8000/tasks/${id}/done`)
         .then(
             (res) => res.data,
             () => ''

@@ -5,8 +5,8 @@
         src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
         ></v-img>
         <v-card-title>{{  item.id }} : {{ item.title }}</v-card-title>
-        <v-card-subtitle @click="doneItem(item.id)" v-if="!item.done">未完了</v-card-subtitle>
-        <v-card-subtitle @click="toggleDone(item.id)" v-if="item.done">完了</v-card-subtitle>
+        <v-btn color="error" @click="doneItem(item.id)" v-if="!item.done">未完了</v-btn>
+        <v-btn color="primary" @click="undone_item(item.id)" v-if="item.done">完了</v-btn>
         <v-card-text>lorem ipsum hoge fuga foo bar</v-card-text>
         <button
         @click="deleteListCard(item.id)"
@@ -40,5 +40,9 @@ export default class ListCard extends Vue {
         this.$emit('parentMethod');
     }
 
+        async undone_item(id: string) {
+        await store.dispatch('undone_item', id);
+        this.$emit('parentMethod');
+    }
 }
 </script>
